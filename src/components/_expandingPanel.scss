@@ -1,0 +1,29 @@
+
+.expandingPanel{
+    display: flex;
+    flex-direction: column;
+    max-width: 400px;
+    width: 100%;
+}
+.expandingPanel-header {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    .expandingPanel-title, .expandingPanel-subtitle {
+        margin: 0 0 .5rem;
+    }
+    .expandingPanel-toggleBtn {
+        align-self: flex-start;
+    }
+}
+//open/close \
+.expandingPanel-cardBody {
+    max-height: 0px;
+    overflow: hidden;
+    transition: all .75s ease-in;
+}
+.expandingPanel-cardBody.cardDetails-enter-done {
+    max-height: 100vh; 
+    transition: all .75s ease;
+    overflow: auto;
+}
