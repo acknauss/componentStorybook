@@ -16,5 +16,11 @@ export const ExpandingPanelStory = () => (
           <ExpandingPanel title="OPEN on Render" subtitle="hello here is subtitle" isDefaultOpen={true}>
             <div><p>children this is the childrens</p></div>
           </ExpandingPanel>
+          <ExpandingPanel title="OPEN on Render- textarea" subtitle="hello here is subtitle" isDefaultOpen={true}>
+            <div>
+              <p>add to the text area</p>
+              <textarea></textarea>
+            </div>
+          </ExpandingPanel>
   </React.Fragment>
 );

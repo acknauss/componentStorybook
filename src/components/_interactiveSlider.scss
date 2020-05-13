@@ -1,0 +1,95 @@
+@import './normalize.css';
+
+.main {
+    background-image: url('./images/lilshack.png');
+    min-height: 100vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .mainContent {
+        z-index: 1;
+    }
+
+}
+.fade-enter .hidden-gray {
+    opacity: .35;
+  }
+
+.fade-enter.fade-enter-active .hidden-gray {
+  opacity: .5;
+  transition: opacity 1s ease;
+  z-index: 0;
+}
+
+
+.fade-exit.fade-exit-active .hidden-gray {
+  opacity: .35;
+  transition: opacity 1s ease;
+}
+
+.page-2 {
+    transform: translateX(-100vw);
+    transition: transform 1s ease .15s;
+}
+.fade-enter-done .page-2, 
+.fade-exit-done .page-2 {
+    transform: translateX(0vw);
+}
+
+.page-1 {
+    transform: translateY(-100vh);
+    transition: transform 1s ease .15s;
+}
+.fade-enter-done .page-1, 
+.fade-exit-done .page-1 {
+    transform: translateY(0vh);
+}
+
+
+.hidden-gray {
+    background-color: #b0b5bd;
+    position: absolute;
+    width: 100%; 
+    height: 100%;
+    opacity: .5;
+    transition: opacity 2s ease;
+}
+
+
+
+.frame-parent {
+    position: relative;
+    overflow: hidden;
+    button {
+        background: transparent;
+        border: none;
+        font-weight: 600;
+        letter-spacing: .5rem;
+    }
+}
+
+.back-btn, .next-btn {
+    position: relative;
+    cursor: pointer;
+    &:before {
+        content: ' ';
+        height: 2px;
+        width: 0px;
+        background-color: black;
+        position: absolute;
+        right: 0px;
+        top: 0;
+        transition: width .5s ease;
+    }
+    &:hover:before{
+        color: red;
+        width: 100%;
+    }
+}
+
+.next-btn:before {
+    right: unset;
+    left: 0;
+}

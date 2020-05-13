@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect, useLayoutEffect } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { CSSTransition } from 'react-transition-group';
 import './_expandingPanel.scss';
 const ExpandingPanel = ({ title, subtitle, isDefaultOpen, children, className = '' }) => {
