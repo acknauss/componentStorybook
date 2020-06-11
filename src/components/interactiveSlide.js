@@ -37,10 +37,11 @@ const InteractiveSlider = () => {
                         <SwitchTransition>
                             <CSSTransition
                                 key={page}
-                                timeout={750}
-                                classNames={'fade'}>
-                            <div className="main">
-                                <div className="hidden-gray"></div>
+                                timeout={700}
+                                classNames={'fade'}
+                                >
+                            <div className={`main main-`+page}>
+                                {/* <div className="hidden-gray"></div> */}
                                     <div className="mainContent">
                                         {loggedin ? (
                                             <LoginPage />

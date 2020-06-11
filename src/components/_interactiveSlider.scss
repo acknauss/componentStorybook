@@ -1,13 +1,89 @@
 @import './normalize.css';
 
+@keyframes example {
+    from {  
+        filter: blur(200px);
+        }
+    to {
+        filter: blur(0px);
+    }
+  }
+  @keyframes comeLeft {
+    from {  
+        filter: hue-rotate(190deg);
+        }
+    to {
+        filter: hue-rotate(0deg);
+    }
+  }
+
+  @keyframes comeRight {
+    from {  
+        filter: blur(200px);
+        
+        }
+    to {
+        filter: blur(0px);
+    }
+  }
+
 .main {
-    background-image: url('./images/lilshack.png');
     min-height: 100vh;
     background-repeat: no-repeat;
-    background-size: cover;
     display: flex;
     align-items: center;
     justify-content: center;
+    transition: background-image .75s ease-in, opacity 1s ease;
+    animation-fill-mode: forwards;
+    animation-duration: 1s;
+    background-size: cover;
+    // &.fade-exit &.fade-enter {
+    //     opacity: .25;
+        
+    // }
+    // &.fade-exit-active, &.fade-enter {
+    //     opacity: .5;
+    // }
+    &.main-0 {
+        animation-name: example;
+        background-image: url('./images/lilshack.png');
+    }
+    &.main-1 {
+        position: relative;
+        &:before {
+            content: '';
+            position: absolute;
+            transform: scale(1.1);
+            width: 100%;
+            height: 100%;
+            animation-name: comeLeft ;
+            background-image: url('./images/iceMountain1.jpg');
+            background-size: cover;
+            animation-fill-mode: forwards;
+            
+            animation-duration: 1.75s;
+        }
+
+        
+    }
+    &.main-2 {
+        position: relative;
+        &:before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+           animation-name: comeRight ;
+            transform: scale(1.1);
+            background-image: url('./images/archbg.jpg');
+            background-size: cover;
+            animation-fill-mode: forwards;
+            animation-duration: 1s;
+        }
+        
+        div, button { color: white; border-color: white}
+        
+    }
     .mainContent {
         z-index: 1;
     }
@@ -28,6 +104,7 @@
   opacity: .35;
   transition: opacity 1s ease;
 }
+
 
 .page-2 {
     transform: translateX(-100vw);
