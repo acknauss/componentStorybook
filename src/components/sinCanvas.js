@@ -43,8 +43,8 @@ const SinCanvas = () => {
     const length = number('Length', .01, optionsL, 'group-wave');
     const amplitude = number('Amplitude', 100, optionsA, 'group-wave');
 
-    const canvasColor = color('fade color', '#ff00ff', 'group-style');
-    const lineColor = color('line color', 'blue', 'group-style');
+    const canvasColor = color('fade color', 'rgba(0,0,0,0.01)', 'group-style');
+    const lineColor = color('line color', 'rgba(0,255,193,0.08)', 'group-style');
     
 
     useEffect(() => {
@@ -61,6 +61,7 @@ const SinCanvas = () => {
     const animate= () => {
             requestAnimationFrame(animate);
             ctx.fillStyle = canvasColor;
+            ctx.fillRect(0, 0, params.width, params.height);
             //ctx.clearRect(0, 0, params.width, params.height);
             ctx.beginPath();
             
