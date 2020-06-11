@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { number } from '@storybook/addon-knobs';
+import { number, color } from '@storybook/addon-knobs';
 
 import './_svg.scss';
 
@@ -42,6 +42,9 @@ const SinCanvas = () => {
     const frequency = number('Frequency', .01, optionsF, 'group-wave');
     const length = number('Length', .01, optionsL, 'group-wave');
     const amplitude = number('Amplitude', 100, optionsA, 'group-wave');
+
+    const canvasColor = color('fade color', '#ff00ff', 'group-style');
+    const lineColor = color('line color', 'blue', 'group-style');
     
 
     useEffect(() => {
@@ -57,8 +60,8 @@ const SinCanvas = () => {
     
     const animate= () => {
             requestAnimationFrame(animate);
-        
-            ctx.clearRect(0, 0, params.width, params.height);
+            ctx.fillStyle = canvasColor;
+            //ctx.clearRect(0, 0, params.width, params.height);
             ctx.beginPath();
             
             ctx.moveTo(0, params.height /2);
@@ -67,7 +70,7 @@ const SinCanvas = () => {
                     ctx.lineTo(i ++, waveY + Math.sin(i * length + increment) * amplitude);
                     
             }
-                
+            ctx.strokeStyle = lineColor;
             ctx.stroke();  
             increment += frequency;
     }
@@ -91,15 +94,18 @@ const SinCanvas = () => {
             console.log('new value')
             animate();
         }
-    }, [waveY, frequency, length, amplitude]);
+    }, [waveY, frequency, length, amplitude, lineColor, canvasColor]);
 
     
-
+    const clearCanvas = () => {
+        ctx.clearRect(0, 0, params.width, params.height);
+    }
 
     return (
         <React.Fragment>
             {waveY} {frequency} {length}
             <canvas ref={canvasRef}></canvas>
+            <button onClick={()=> clearCanvas()}>clear canvas</button>
         </React.Fragment>
         
     )
