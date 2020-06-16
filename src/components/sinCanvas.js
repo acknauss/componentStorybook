@@ -51,10 +51,10 @@ const SinCanvas = () => {
     const amplitude = number('Amplitude', 100, optionsA, 'group-wave');
     const cLineWidth = number('stroke width', 1, optionsW, 'group-wave');
 
-    const canvasColor = color('fade color', 'rgba(0,0,0,0.01)', 'group-style');
+    const canvasColor = color('background color', 'rgba(0,0,0,0.01)', 'group-style');
     const lineColor = color('line color', 'rgba(0,255,193,0.08)', 'group-style');
     const shadowColor = color('shadow color', 'rgba(255,255,255,1)', 'group-style');
-    const shadowBlurWidth = number('shadowBlur', 1, optionsW, 'group-style');
+    const shadowBlurWidth = number('shadow blur', 10, optionsW, 'group-style');
 
 
     
@@ -73,7 +73,7 @@ const SinCanvas = () => {
     
     const animate= () => {
             requestAnimationFrame(animate);
-            ctx.fillStyle = canvasColor;
+            
             ctx.fillRect(0, 0, params.width, params.height);
             ctx.beginPath();
             
@@ -87,6 +87,7 @@ const SinCanvas = () => {
             ctx.lineWidth = cLineWidth;
             ctx.shadowBlur = shadowBlurWidth;
             ctx.shadowColor = shadowColor;
+            
             ctx.stroke();  
             increment += frequency;
     }
@@ -97,7 +98,8 @@ const SinCanvas = () => {
             canvasRef.current.height = params.height;
         }
         if(ctx) {
-
+            ctx.fillStyle = canvasColor;
+            
             animate();
         }
 
@@ -108,6 +110,7 @@ const SinCanvas = () => {
 
         if(ctx) {
             console.log('new value');
+            ctx.fillStyle = canvasColor;
             animate();
         }
     }, [waveY, frequency, length, amplitude, lineColor, canvasColor, cLineWidth,shadowColor, shadowBlurWidth]);
