@@ -1,4 +1,5 @@
-A storybook for UI components 
+A storybook playground for building reusable and accessible UI components.
+
 
 ## Available Scripts
 
